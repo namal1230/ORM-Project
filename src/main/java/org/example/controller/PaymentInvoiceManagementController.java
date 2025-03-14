@@ -1,2 +1,4 @@
-package org.example.controller;public class PaymentInvoiceManagementController {
+package org.example.controller;
+
+public class PaymentInvoiceManagementController {
 }

@@ -1,2 +1,5 @@
-package org.example.dto;public class Users {
+package org.example.dto;
+
+
+public class Users {
 }

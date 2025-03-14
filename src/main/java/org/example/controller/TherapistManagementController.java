@@ -1,2 +1,4 @@
-package org.example.controller;public class TherapistManagementController {
+package org.example.controller;
+
+public class TherapistManagementController {
 }

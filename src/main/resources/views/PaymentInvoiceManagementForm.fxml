@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PaymentInvoiceManagementController">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="325.0" layoutY="135.0" text="Save">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="413.0" layoutY="135.0" text="Update">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="515.0" layoutY="135.0" text="Delete">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField layoutX="271.0" layoutY="83.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" text="payment" />
+      <Label layoutX="163.0" layoutY="28.0" text="Payment &amp; Invoice Management">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="193.0" layoutY="69.0" prefWidth="200.0" />
+      <TableView layoutX="38.0" layoutY="179.0" prefHeight="193.0" prefWidth="507.0">
+         <columns>
+            <TableColumn prefWidth="141.0" text="Theropy" />
+            <TableColumn prefWidth="129.0" text="Patient" />
+            <TableColumn prefWidth="132.0" text="Payement" />
+            <TableColumn prefWidth="104.0" text="Status" />
+         </columns>
+      </TableView>
+      <JFXComboBox layoutX="24.0" layoutY="83.0" prefHeight="25.0" prefWidth="100.0" promptText="theropy" />
+      <JFXComboBox layoutX="143.0" layoutY="83.0" prefHeight="25.0" prefWidth="100.0" promptText="patient" />
+      <JFXComboBox layoutX="402.0" layoutY="83.0" prefHeight="25.0" prefWidth="100.0" promptText="status" />
+      <JFXButton buttonType="RAISED" layoutX="160.0" layoutY="135.0" text="Generate Report">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
 </AnchorPane>

@@ -1,2 +1,4 @@
-package org.example.controller;public class PatientTheropyHistoryController {
+package org.example.controller;
+
+public class PatientTheropyHistoryController {
 }

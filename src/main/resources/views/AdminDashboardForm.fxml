@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
+<AnchorPane prefHeight="528.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.AdminDashboardController">
+   <children>
+      <AnchorPane fx:id="dashAnc" layoutX="222.0" layoutY="44.0" prefHeight="484.0" prefWidth="573.0" />
+      <Label layoutX="410.0" layoutY="21.0" text="User Name">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="574.0" layoutY="21.0" text="Password">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="496.0" layoutY="21.0" text="Label" textFill="#5b8db5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="649.0" layoutY="21.0" text="Label" textFill="#5b8db5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="92.0" onAction="#therapistOnAction" prefHeight="76.0" prefWidth="96.0" style="-fx-background-color: yellow;" text="Therapist" textFill="#a18989">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="188.0" onAction="#theropyProgramOnAction" prefHeight="76.0" prefWidth="96.0" style="-fx-background-color: yellow;" text="Therapy &#10;Program" textFill="#a18989">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="286.0" onAction="#patientHistoryOnAction" prefHeight="76.0" prefWidth="96.0" style="-fx-background-color: yellow;" text="Patient &#10;History" textFill="#a18989">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
 </AnchorPane>

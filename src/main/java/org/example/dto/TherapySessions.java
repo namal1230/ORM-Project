@@ -1,2 +1,4 @@
-package org.example.dto;public class TherapySessions {
+package org.example.dto;
+
+public class TherapySessions {
 }
