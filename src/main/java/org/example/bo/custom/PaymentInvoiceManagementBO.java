@@ -1,2 +1,4 @@
-package org.example.bo.custom;public interface PaymentInvoiceManagementBO {
+package org.example.bo.custom;
+
+public interface PaymentInvoiceManagementBO {
 }

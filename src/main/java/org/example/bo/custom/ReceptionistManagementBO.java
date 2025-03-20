@@ -1,2 +1,4 @@
-package org.example.bo.custom;public interface ReceptionistManagementBO {
+package org.example.bo.custom;
+
+public interface ReceptionistManagementBO {
 }

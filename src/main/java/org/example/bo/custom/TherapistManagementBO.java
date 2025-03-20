@@ -1,2 +1,4 @@
-package org.example.bo.custom;public interface TherapistManagementBO {
+package org.example.bo.custom;
+
+public interface TherapistManagementBO {
 }

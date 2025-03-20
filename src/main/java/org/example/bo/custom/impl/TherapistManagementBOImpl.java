@@ -1,2 +1,4 @@
-package org.example.bo.impl;public class TherapistManagementBO {
+package org.example.bo.custom.impl;
+
+public class TherapistManagementBOImpl {
 }

@@ -1,2 +1,5 @@
-package org.example.bo.impl;public class AdminBO {
+package org.example.bo.custom.impl;
+
+public class AdminManagementBOImpl {
+
 }
