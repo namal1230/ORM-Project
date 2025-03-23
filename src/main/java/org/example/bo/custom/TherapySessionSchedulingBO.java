@@ -1,4 +1,6 @@
 package org.example.bo.custom;
 
-public interface TherapySessionSchedulingBO {
+import org.example.bo.SuperBO;
+
+public interface TherapySessionSchedulingBO extends SuperBO {
 }

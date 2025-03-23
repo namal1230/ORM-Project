@@ -1,4 +1,6 @@
 package org.example.bo.custom;
 
-public interface PatientTheropyHistoryBO {
+import org.example.bo.SuperBO;
+
+public interface PatientTheropyHistoryBO extends SuperBO {
 }

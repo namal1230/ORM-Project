@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.config.FactoryConfiguration;
+import org.example.entity.Users;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 
@@ -21,5 +25,17 @@ public class AppInitializer extends Application {
         Scene scene = new Scene(load);
         stage.setScene(scene);
         stage.show();
+
+        Session session = FactoryConfiguration.getInstance().openSession();
+        Transaction transaction = session.beginTransaction();
+        Users user = new Users();
+        user.setName("Nimal");
+        user.setPassword("PHW123");
+        user.setJobRole("Admin");
+
+        session.save(user);
+        transaction.commit();
+
+        session.close();
     }
 }

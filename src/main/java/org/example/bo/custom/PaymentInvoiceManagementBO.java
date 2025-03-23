@@ -1,4 +1,6 @@
 package org.example.bo.custom;
 
-public interface PaymentInvoiceManagementBO {
+import org.example.bo.SuperBO;
+
+public interface PaymentInvoiceManagementBO extends SuperBO {
 }

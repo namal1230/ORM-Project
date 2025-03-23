@@ -9,10 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.example.bo.BOFactory;
+import org.example.bo.SuperBO;
+import org.example.bo.custom.LoginBO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,24 +38,40 @@ public class LoginFormController implements Initializable {
 
     public void loginOnAction(ActionEvent event) throws IOException {
 
+        String name = txtName.getText();
+        String password = txtPassword.getText();
         String value = cmbUserRole.getValue();
-        if (value == "Admin") {
-            Window window = txtLogin.getScene().getWindow();
-            window.hide();
-            Parent load = FXMLLoader.load(getClass().getResource("/views/AdminDashboardForm.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(load);
-            stage.setScene(scene);
-            stage.show();
-        } else {
-            Window window = txtLogin.getScene().getWindow();
-            window.hide();
-            Parent load = FXMLLoader.load(getClass().getResource("/views/ReceptionistDashboardForm.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(load);
-            stage.setScene(scene);
-            stage.show();
+
+        LoginBO loginBO = (LoginBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.USER);
+
+        if (name== null && password ==null){
+            new Alert(Alert.AlertType.ERROR,"USER name and Password is Empty..").show();
+            return;
         }
+
+        boolean isAvailable = loginBO.checkUser(name, password,value);
+
+        if (isAvailable){
+            if (value == "Admin") {
+                Window window = txtLogin.getScene().getWindow();
+                window.hide();
+                Parent load = FXMLLoader.load(getClass().getResource("/views/AdminDashboardForm.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(load);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                Window window = txtLogin.getScene().getWindow();
+                window.hide();
+                Parent load = FXMLLoader.load(getClass().getResource("/views/ReceptionistDashboardForm.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(load);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+
+
 
     }
 }

@@ -1,4 +1,6 @@
 package org.example.bo.custom;
 
-public interface ReceptionistManagementBO {
+import org.example.bo.SuperBO;
+
+public interface ReceptionistManagementBO extends SuperBO {
 }
