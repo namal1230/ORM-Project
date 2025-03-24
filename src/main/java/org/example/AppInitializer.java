@@ -26,16 +26,16 @@ public class AppInitializer extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Session session = FactoryConfiguration.getInstance().openSession();
-        Transaction transaction = session.beginTransaction();
-        Users user = new Users();
-        user.setName("Nimal");
-        user.setPassword("PHW123");
-        user.setJobRole("Admin");
+//        Session session = FactoryConfiguration.getInstance().openSession();
+//        Transaction transaction = session.beginTransaction();
+//        Users user = new Users();
+//        user.setName("Nimal");
+//        user.setPassword("PHW123");
+//        user.setJobRole("Admin");
 
-        session.save(user);
-        transaction.commit();
-
-        session.close();
+//        session.save(user);
+//        transaction.commit();
+//
+//        session.close();
     }
 }

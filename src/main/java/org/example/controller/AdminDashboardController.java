@@ -2,13 +2,19 @@ package org.example.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AdminDashboardController {
+public class AdminDashboardController implements Initializable {
     public AnchorPane dashAnc;
+    public Label lblName;
+    public Label lblPassword;
 
     public void patientHistoryOnAction(ActionEvent event) throws IOException {
         dashAnc.getChildren().clear();
@@ -28,4 +34,13 @@ public class AdminDashboardController {
         dashAnc.getChildren().add(load);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public void setValue(String name, String password) {
+        lblName.setText(name);
+        lblPassword.setText(password);
+    }
 }

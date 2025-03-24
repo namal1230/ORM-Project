@@ -17,6 +17,7 @@ import javafx.stage.Window;
 import org.example.bo.BOFactory;
 import org.example.bo.SuperBO;
 import org.example.bo.custom.LoginBO;
+import org.example.dto.UsersDTO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,13 +50,16 @@ public class LoginFormController implements Initializable {
             return;
         }
 
-        boolean isAvailable = loginBO.checkUser(name, password,value);
+        boolean isAvailable = loginBO.checkUser(new UsersDTO(name, password,value));
 
         if (isAvailable){
             if (value == "Admin") {
                 Window window = txtLogin.getScene().getWindow();
                 window.hide();
-                Parent load = FXMLLoader.load(getClass().getResource("/views/AdminDashboardForm.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/AdminDashboardForm.fxml"));
+                Parent load = fxmlLoader.load();
+                AdminDashboardController controller = fxmlLoader.getController();
+                controller.setValue(name,password);
                 Stage stage = new Stage();
                 Scene scene = new Scene(load);
                 stage.setScene(scene);

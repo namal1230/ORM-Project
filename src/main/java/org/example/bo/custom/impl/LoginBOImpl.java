@@ -4,6 +4,8 @@ import org.example.bo.custom.LoginBO;
 import org.example.dao.DAOFactory;
 import org.example.dao.SuperDAO;
 import org.example.dao.custom.UserDAO;
+import org.example.dto.UsersDTO;
+import org.example.entity.Users;
 
 import java.io.IOException;
 
@@ -11,7 +13,7 @@ public class LoginBOImpl implements LoginBO {
 
     UserDAO Userdao = (UserDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.USER);
     @Override
-    public boolean checkUser(String name, String password,String jobRole) throws IOException {
-        return Userdao.checkUser(name,password,jobRole);
+    public boolean checkUser(UsersDTO usersDTO) throws IOException {
+        return Userdao.checkUser(new Users(usersDTO.getName(),usersDTO.getPassword(),usersDTO.getJobRole()));
     }
 }

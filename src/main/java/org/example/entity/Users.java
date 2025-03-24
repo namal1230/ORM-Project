@@ -19,4 +19,10 @@ public class Users {
     private String name;
     private String password;
     private String jobRole;
+
+    public Users(String name, String password, String jobRole) {
+        this.name=name;
+        this.password=password;
+        this.jobRole=jobRole;
+    }
 }
