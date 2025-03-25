@@ -8,8 +8,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class PaymentsDTO {
-    private String theropy;
-    private String patient;
+    private int id;
+    private int theropy;
+    private int patient;
     private double payment;
     private String status;
+
+    public PaymentsDTO(int therapy, int patient, double payment, String status) {
+        this.theropy=therapy;
+        this.patient=patient;
+        this.payment=payment;
+        this.status=status;
+    }
 }

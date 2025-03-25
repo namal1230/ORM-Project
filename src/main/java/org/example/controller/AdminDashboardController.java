@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminDashboardController implements Initializable {
+public class AdminDashboardController{
     public AnchorPane dashAnc;
     public Label lblName;
     public Label lblPassword;
@@ -32,11 +32,6 @@ public class AdminDashboardController implements Initializable {
         dashAnc.getChildren().clear();
         Parent load = FXMLLoader.load(getClass().getResource("/views/TherapistManagementForm.fxml"));
         dashAnc.getChildren().add(load);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void setValue(String name, String password) {

@@ -1,7 +1,6 @@
 package org.example.bo;
 
-import org.example.bo.custom.impl.LoginBOImpl;
-import org.example.bo.custom.impl.TherapistManagementBOImpl;
+import org.example.bo.custom.impl.*;
 
 public class BOFactory {
     public static BOFactory boFactory;
@@ -12,7 +11,8 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        USER,THERAPIST
+        USER,THERAPIST,THERAPY_PROGRAM,PATIENTS,THERAPY_SESSION,
+        PATIENT_HISTORY,PAYMENTS
     }
 
     public SuperBO getBO(BOTypes boTypes){
@@ -22,6 +22,21 @@ public class BOFactory {
             }
             case THERAPIST -> {
                 return new TherapistManagementBOImpl();
+            }
+            case THERAPY_PROGRAM -> {
+                return new TherapyProgramManagementBOImpl();
+            }
+            case PATIENTS -> {
+                return new PatientManagementBOImpl();
+            }
+            case THERAPY_SESSION -> {
+                return new TherapySessionSchedulingBOImpl();
+            }
+            case PATIENT_HISTORY -> {
+                return new PatientTheropyHistoryBOImpl();
+            }
+            case PAYMENTS -> {
+                return new PaymentInvoiceManagementBOImpl();
             }
             default -> {
                 return null;

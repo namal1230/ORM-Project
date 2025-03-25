@@ -28,4 +28,11 @@ public class Therapists {
         this.status=status;
         this.program=program;
     }
+
+    public Therapists(int id, String name, String status, String program) {
+        this.id=id;
+        this.name=name;
+        this.status=status;
+        this.program=program;
+    }
 }

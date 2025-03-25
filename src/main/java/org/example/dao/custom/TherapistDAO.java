@@ -16,4 +16,9 @@ public interface TherapistDAO extends SuperDAO {
     int getLastId() throws IOException;
 
     boolean delete(String id) throws IOException;
+
+    Therapists getbyId(int therapy) throws IOException;
+
+    List getAllId() throws IOException;
+
 }

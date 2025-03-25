@@ -100,7 +100,6 @@ public class TherapistManagementController implements Initializable {
                 String id = lblId.getText();
                 String lastId = id.replaceAll("^T", "");
 
-                System.out.println(lastId);
                 boolean isUpdate = therapistManagementBO.updateTherapist(new TherapistsDTO(Integer.parseInt(lastId),name, status, program));
 
                 if (isUpdate) {

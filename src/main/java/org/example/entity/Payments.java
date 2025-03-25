@@ -13,12 +13,17 @@ public class Payments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String theropy;
-    private String patient;
     private double payment;
     private String status;
     @ManyToOne
     private Patients patients;
     @ManyToOne
     private Therapists therapists;
+
+    public Payments(double payment, String status, Patients patients, Therapists therapists) {
+        this.payment=payment;
+        this.status=status;
+        this.patients=patients;
+        this.therapists=therapists;
+    }
 }

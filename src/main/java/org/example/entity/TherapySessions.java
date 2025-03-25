@@ -13,8 +13,6 @@ public class TherapySessions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String therapy;
-    private String patient;
     private double cost;
     private String description;
     @ManyToOne
@@ -23,4 +21,12 @@ public class TherapySessions {
     private Therapists therapists;
     @ManyToOne
     private TherapyPrograms therapyPrograms;
+
+    public TherapySessions(double cost, String description, Patients patient, Therapists therapy, TherapyPrograms program) {
+        this.cost=cost;
+        this.description=description;
+        this.patients=patient;
+        this.therapists=therapy;
+        this.therapyPrograms=program;
+    }
 }

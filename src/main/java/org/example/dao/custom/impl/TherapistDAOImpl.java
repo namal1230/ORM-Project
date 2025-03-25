@@ -47,6 +47,12 @@ public class TherapistDAOImpl implements TherapistDAO {
     @Override
     public int getLastId() throws IOException {
         Session session = FactoryConfiguration.getInstance().openSession();
+        List<Therapists> fromTherapists = session.createQuery("FROM Therapists ", Therapists.class).list();
+
+        if (fromTherapists.isEmpty()){
+            return 1;
+        }
+
         return  (int) session.createQuery(" SELECT t.id from Therapists t ORDER BY t.id desc").setMaxResults(1).uniqueResult();
     }
 
@@ -62,5 +68,18 @@ public class TherapistDAOImpl implements TherapistDAO {
 
         session.close();
         return true;
+    }
+
+    @Override
+    public Therapists getbyId(int therapy) throws IOException {
+        Session session = FactoryConfiguration.getInstance().openSession();
+        Therapists therapists = session.get(Therapists.class, therapy);
+        return therapists;
+    }
+
+    @Override
+    public List getAllId() throws IOException {
+        Session session = FactoryConfiguration.getInstance().openSession();
+        return session.createQuery("SELECT t.id FROM Therapists t").list();
     }
 }

@@ -21,4 +21,19 @@ public class TherapyPrograms {
     private String description;
     @OneToMany(mappedBy = "therapyPrograms")
     private List<TherapySessions> therapySessions;
+
+    public TherapyPrograms(String name, String duration, double cost, String description) {
+        this.name=name;
+        this.duration=duration;
+        this.cost=cost;
+        this.description=description;
+    }
+
+    public TherapyPrograms(int id, String name, String duration, double cost, String description) {
+        this.id=id;
+        this.name=name;
+        this.duration=duration;
+        this.cost=cost;
+        this.description=description;
+    }
 }

@@ -45,21 +45,21 @@ public class LoginFormController implements Initializable {
 
         LoginBO loginBO = (LoginBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.USER);
 
-        if (name== null && password ==null){
-            new Alert(Alert.AlertType.ERROR,"USER name and Password is Empty..").show();
+        if (name == null && password == null) {
+            new Alert(Alert.AlertType.ERROR, "USER name and Password is Empty..").show();
             return;
         }
 
-        boolean isAvailable = loginBO.checkUser(new UsersDTO(name, password,value));
+        boolean isAvailable = loginBO.checkUser(new UsersDTO(name, password, value));
 
-        if (isAvailable){
+        if (isAvailable) {
             if (value == "Admin") {
                 Window window = txtLogin.getScene().getWindow();
                 window.hide();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/AdminDashboardForm.fxml"));
                 Parent load = fxmlLoader.load();
                 AdminDashboardController controller = fxmlLoader.getController();
-                controller.setValue(name,password);
+                controller.setValue(name, password);
                 Stage stage = new Stage();
                 Scene scene = new Scene(load);
                 stage.setScene(scene);
@@ -67,15 +67,15 @@ public class LoginFormController implements Initializable {
             } else {
                 Window window = txtLogin.getScene().getWindow();
                 window.hide();
-                Parent load = FXMLLoader.load(getClass().getResource("/views/ReceptionistDashboardForm.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/ReceptionistDashboardForm.fxml"));
+                Parent load = fxmlLoader.load();
+                ReceptionistDashboardController controller = fxmlLoader.getController();
+                controller.setValues(name, password);
                 Stage stage = new Stage();
                 Scene scene = new Scene(load);
                 stage.setScene(scene);
                 stage.show();
             }
         }
-
-
-
     }
 }

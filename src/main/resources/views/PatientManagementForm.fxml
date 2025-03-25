@@ -9,42 +9,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PatientManagementController">
+<AnchorPane prefHeight="418.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PatientManagementController">
    <children>
-      <JFXButton buttonType="RAISED" layoutX="325.0" layoutY="135.0" text="Save">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="325.0" layoutY="171.0" onAction="#saveOnAction" text="Save">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="413.0" layoutY="135.0" text="Update">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="515.0" layoutY="135.0" text="Delete">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </JFXButton>
-      <JFXTextField layoutX="39.0" layoutY="82.0" prefHeight="25.0" prefWidth="100.0" promptText="name" />
-      <JFXTextField layoutX="174.0" layoutY="83.0" prefHeight="25.0" prefWidth="108.0" promptText="duration" />
-      <JFXTextField layoutX="311.0" layoutY="85.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" />
+      <JFXTextField fx:id="txtName" layoutX="39.0" layoutY="118.0" prefHeight="25.0" prefWidth="100.0" promptText="name" />
+      <JFXTextField fx:id="txtDuration" layoutX="174.0" layoutY="119.0" prefHeight="25.0" prefWidth="108.0" promptText="duration" />
+      <JFXTextField fx:id="txtCost" layoutX="311.0" layoutY="121.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" />
       <Label layoutX="203.0" layoutY="27.0" text="Patient Management">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Separator layoutX="193.0" layoutY="69.0" prefWidth="200.0" />
-      <TableView layoutX="38.0" layoutY="179.0" prefHeight="193.0" prefWidth="507.0">
+      <TableView fx:id="tblPatients" layoutX="38.0" layoutY="215.0" onMouseClicked="#tblOnAction" prefHeight="193.0" prefWidth="507.0">
          <columns>
-            <TableColumn prefWidth="141.0" text="Name" />
-            <TableColumn prefWidth="129.0" text="Duration" />
-            <TableColumn prefWidth="132.0" text="Cost" />
-            <TableColumn prefWidth="104.0" text="Decription" />
+            <TableColumn fx:id="colName" prefWidth="141.0" text="Name" />
+            <TableColumn fx:id="colDuration" prefWidth="129.0" text="Duration" />
+            <TableColumn fx:id="colCost" prefWidth="132.0" text="Cost" />
+            <TableColumn fx:id="colDescription" prefWidth="104.0" text="Decription" />
          </columns>
       </TableView>
-      <JFXTextField layoutX="458.0" layoutY="83.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" text="description" />
-      <JFXTextField layoutX="38.0" layoutY="140.0" prefHeight="25.0" prefWidth="279.0" promptText="Search therapy Sessions" />
+      <JFXTextField fx:id="txtDescription" layoutX="458.0" layoutY="119.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" text="description" />
+      <JFXTextField fx:id="txtSearch" layoutX="38.0" layoutY="176.0" onAction="#searchOnAction" prefHeight="25.0" prefWidth="279.0" promptText="Search therapy Sessions" />
+      <Label layoutX="39.0" layoutY="81.0" text="Id:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblId" layoutX="75.0" layoutY="88.0" text="Label" />
+      <JFXButton buttonType="RAISED" layoutX="413.0" layoutY="171.0" onAction="#resetOnAction" text="Reset">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

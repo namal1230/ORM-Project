@@ -1,8 +1,7 @@
 package org.example.dao;
 
 import org.example.dao.custom.TherapistDAO;
-import org.example.dao.custom.impl.TherapistDAOImpl;
-import org.example.dao.custom.impl.UserDAOImpl;
+import org.example.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -14,7 +13,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        USER,THERAPIST
+        USER,THERAPIST,THERAPIST_PROGRAM,PATIENTS,THERAPY_SESSION,PAYMENTS
     }
 
     public SuperDAO getDAO(DAOTypes types){
@@ -24,6 +23,18 @@ public class DAOFactory {
             }
             case THERAPIST -> {
                 return new TherapistDAOImpl();
+            }
+            case THERAPIST_PROGRAM -> {
+                return new TherapyProgramsDAOImpl();
+            }
+            case PATIENTS -> {
+                return new PatientsDAOImpl();
+            }
+            case THERAPY_SESSION -> {
+                return new TherapySessionsDAOImpl();
+            }
+            case PAYMENTS -> {
+                return new PaymentsDAOImpl();
             }
             default -> {
                 return null;

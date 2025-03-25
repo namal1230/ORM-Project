@@ -29,10 +29,10 @@ public class AppInitializer extends Application {
 //        Session session = FactoryConfiguration.getInstance().openSession();
 //        Transaction transaction = session.beginTransaction();
 //        Users user = new Users();
-//        user.setName("Nimal");
-//        user.setPassword("PHW123");
-//        user.setJobRole("Admin");
-
+//        user.setName("Bhashitha");
+//        user.setPassword("UNN123");
+//        user.setJobRole("Receptionist ");
+//
 //        session.save(user);
 //        transaction.commit();
 //

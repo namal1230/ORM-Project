@@ -19,7 +19,7 @@ public class TherapistManagementBOImpl implements TherapistManagementBO {
 
     @Override
     public boolean updateTherapist(TherapistsDTO therapistsDTO) throws IOException {
-        return therapist.updateTherapist(new Therapists(therapistsDTO.getName(),therapistsDTO.getStatus(),therapistsDTO.getProgram()));
+        return therapist.updateTherapist(new Therapists(therapistsDTO.getId(),therapistsDTO.getName(),therapistsDTO.getStatus(),therapistsDTO.getProgram()));
     }
 
     @Override

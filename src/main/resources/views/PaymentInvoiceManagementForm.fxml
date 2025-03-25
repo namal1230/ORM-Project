@@ -10,43 +10,43 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PaymentInvoiceManagementController">
+<AnchorPane prefHeight="448.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PaymentInvoiceManagementController">
    <children>
-      <JFXButton buttonType="RAISED" layoutX="325.0" layoutY="135.0" text="Save">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="409.0" layoutY="195.0" onAction="#saveOnAction" text="Save">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="413.0" layoutY="135.0" text="Update">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="515.0" layoutY="135.0" text="Delete">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </JFXButton>
-      <JFXTextField layoutX="271.0" layoutY="83.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" text="payment" />
+      <JFXTextField fx:id="txtPayment" layoutX="280.0" layoutY="147.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" text="payment" />
       <Label layoutX="163.0" layoutY="28.0" text="Payment &amp; Invoice Management">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Separator layoutX="193.0" layoutY="69.0" prefWidth="200.0" />
-      <TableView layoutX="38.0" layoutY="179.0" prefHeight="193.0" prefWidth="507.0">
+      <TableView fx:id="tblPayment" layoutX="47.0" layoutY="243.0" onMouseClicked="#tableOnAction" prefHeight="193.0" prefWidth="507.0">
          <columns>
-            <TableColumn prefWidth="141.0" text="Theropy" />
-            <TableColumn prefWidth="129.0" text="Patient" />
-            <TableColumn prefWidth="132.0" text="Payement" />
-            <TableColumn prefWidth="104.0" text="Status" />
+            <TableColumn fx:id="colTherapy" prefWidth="141.0" text="Theropy" />
+            <TableColumn fx:id="colPatient" prefWidth="129.0" text="Patient" />
+            <TableColumn fx:id="colPayment" prefWidth="132.0" text="Payement" />
+            <TableColumn fx:id="colStatus" prefWidth="104.0" text="Status" />
          </columns>
       </TableView>
-      <JFXComboBox layoutX="24.0" layoutY="83.0" prefHeight="25.0" prefWidth="100.0" promptText="theropy" />
-      <JFXComboBox layoutX="143.0" layoutY="83.0" prefHeight="25.0" prefWidth="100.0" promptText="patient" />
-      <JFXComboBox layoutX="402.0" layoutY="83.0" prefHeight="25.0" prefWidth="100.0" promptText="status" />
-      <JFXButton buttonType="RAISED" layoutX="160.0" layoutY="135.0" text="Generate Report">
+      <JFXComboBox fx:id="cmbTherapy" layoutX="33.0" layoutY="147.0" prefHeight="25.0" prefWidth="100.0" promptText="theropy" />
+      <JFXComboBox fx:id="cmbPatient" layoutX="152.0" layoutY="147.0" prefHeight="25.0" prefWidth="100.0" promptText="patient" />
+      <JFXButton buttonType="RAISED" layoutX="250.0" layoutY="195.0" text="Generate Report">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="47.0" layoutY="90.0" text="Id:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblId" layoutX="83.0" layoutY="97.0" text="Label" />
+      <JFXTextField fx:id="txtStatus" layoutX="412.0" layoutY="147.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" text="status" />
+      <JFXButton buttonType="RAISED" layoutX="478.0" layoutY="195.0" onAction="#resetOnAction" text="Reset">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
