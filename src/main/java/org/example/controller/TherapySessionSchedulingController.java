@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class  TherapySessionSchedulingController implements Initializable {
     public JFXButton btnSave;
@@ -91,7 +92,18 @@ public class  TherapySessionSchedulingController implements Initializable {
         String therapy = cmbTerapy.getValue();
         String program = cmbProgram.getValue();
         String cost = txtCost.getText();
+        boolean ccost= Pattern.matches("^-?\\d*\\.\\d+$ ",cost);
+        if (!ccost){
+            txtCost.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String description = txtDescription.getText();
+        boolean cdescription = Pattern.matches("^[A-Za-z0-9]+$\n",description);
+        if (!cdescription){
+            txtDescription.setStyle("-fx-text-fill: RED");
+            return;
+        }
+        String id = lblId.getText();
 
         if (btnSave.getText().equals("Save")){
             try {
@@ -109,7 +121,6 @@ public class  TherapySessionSchedulingController implements Initializable {
             }
         } else if (btnSave.getText().equals("Update")) {
             try {
-                String id = lblId.getText();
                 String lid = id.replaceAll("^TS", "");
                 boolean isUpdate = therapySessionSchedulingBO.updateTherapySession(new TherapySessionsDTO(Integer.parseInt(lid),Integer.parseInt(therapy), Integer.parseInt(patient), Integer.parseInt(program), Double.parseDouble(cost), description));
 

@@ -22,6 +22,7 @@ import org.example.dto.UsersDTO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class LoginFormController implements Initializable {
     public JFXTextField txtName;
@@ -40,7 +41,17 @@ public class LoginFormController implements Initializable {
     public void loginOnAction(ActionEvent event) throws IOException {
 
         String name = txtName.getText();
+        boolean cname = Pattern.matches("^[A-Za-z]+$",name);
+        if (!cname){
+            txtName.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String password = txtPassword.getText();
+        boolean cpassword = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$",password);
+        if (!cpassword){
+            txtPassword.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String value = cmbUserRole.getValue();
 
         LoginBO loginBO = (LoginBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.USER);

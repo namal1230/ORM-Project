@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class TherapistManagementController implements Initializable {
     public JFXTextField txtName;
@@ -93,13 +94,23 @@ public class TherapistManagementController implements Initializable {
 
     public void saveOnAction(ActionEvent actionEvent) {
 
+        String name = txtName.getText();
+        boolean cname = Pattern.matches("^[A-Za-z]+$",name);
+        if (!cname){
+            txtName.setStyle("-fx-text-fill: RED");
+            return;
+        }
+        String status = txtStatus.getText();
+        boolean cstatus = Pattern.matches("^[A-Za-z0-9]+$\n",status);
+        if (!cstatus){
+            txtStatus.setStyle("-fx-text-fill: RED");
+            return;
+        }
+        String program = cmbProgram.getValue().toString();
+        String id = lblId.getText();
         if (btnSave.getText().equals("Save")){
             try {
-                String name = txtName.getText();
-                String status = txtStatus.getText();
-                Object program = cmbProgram.getValue();
-
-                boolean isSave = therapistManagementBO.saveTherapist(new TherapistsDTO(name, status, program.toString()));
+                boolean isSave = therapistManagementBO.saveTherapist(new TherapistsDTO(name, status, program));
                 if (isSave) {
                     new Alert(Alert.AlertType.INFORMATION,"Therapist Save Successfully.").show();
                     refreshPage();
@@ -113,10 +124,6 @@ public class TherapistManagementController implements Initializable {
             }
         } else if (btnSave.getText().equals("Update")) {
             try {
-                String name = txtName.getText();
-                String status = txtStatus.getText();
-                String program = cmbProgram.getValue().toString();
-                String id = lblId.getText();
                 String lastId = id.replaceAll("^T", "");
 
                 boolean isUpdate = therapistManagementBO.updateTherapist(new TherapistsDTO(Integer.parseInt(lastId),name, status, program));

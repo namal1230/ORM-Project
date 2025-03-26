@@ -31,6 +31,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class PaymentInvoiceManagementController implements Initializable {
     public JFXButton btnSave;
@@ -116,7 +117,17 @@ public class PaymentInvoiceManagementController implements Initializable {
 
     public void saveOnAction(ActionEvent actionEvent) {
         String payments = txtPayment.getText();
+        boolean cpayments= Pattern.matches("^-?\\d*\\.\\d+$ ",payments);
+        if (!cpayments){
+            txtPayment.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String status = txtStatus.getText();
+        boolean cstatus = Pattern.matches("^[A-Za-z0-9]+$\n",status);
+        if (!cstatus){
+            txtStatus.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String patient = cmbPatient.getValue();
         String therapy = cmbTherapy.getValue();
 

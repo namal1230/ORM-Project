@@ -29,6 +29,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class TherapProgramManagementController implements Initializable {
 
@@ -92,14 +93,34 @@ public class TherapProgramManagementController implements Initializable {
     }
 
     public void saveOnAction(ActionEvent actionEvent) {
+        String name = txtName.getText();
+        boolean cname = Pattern.matches("^[A-Za-z]+$",name);
+        if (!cname){
+            txtName.setStyle("-fx-text-fill: RED");
+            return;
+        }
+        String duration = txtDuration.getText();
+        boolean cduration = Pattern.matches("^[A-Za-z0-9]+$",duration);
+        if (!cduration){
+            txtDuration.setStyle("-fx-text-fill: RED");
+            return;
+        }
+        String cost = txtCost.getText();
+        boolean ccost= Pattern.matches("^-?\\d*\\.\\d+$ ",cost);
+        if (!ccost){
+            txtCost.setStyle("-fx-text-fill: RED");
+            return;
+        }
+        String description = txtDescription.getText();
+        boolean cdescription = Pattern.matches("^[A-Za-z0-9]+$\n",description);
+        if (!cdescription){
+            txtDescription.setStyle("-fx-text-fill: RED");
+            return;
+        }
+        String id = lblId.getText();
 
         if (btnSave.getText().equals("Save")) {
             try {
-                String name = txtName.getText();
-                String duration = txtDuration.getText();
-                String cost = txtCost.getText();
-                String description = txtDescription.getText();
-
                 boolean isSave = therapyProgramManagementBO.saveTherapy(new TherapyProgramsDTO(name, duration, Double.parseDouble(cost), description));
 
                 if (isSave){
@@ -115,12 +136,6 @@ public class TherapProgramManagementController implements Initializable {
             }
         } else if (btnSave.getText().equals("Update")) {
             try {
-                String id = lblId.getText();
-                String name = txtName.getText();
-                String duration = txtDuration.getText();
-                String cost = txtCost.getText();
-                String description = txtDescription.getText();
-
                 String lid = id.replaceAll("^TP", "");
                 boolean isUpdate = therapyProgramManagementBO.updateTherapyProgram(new TherapyProgramsDTO(Integer.parseInt(lid),name, duration, Double.parseDouble(cost), description));
 

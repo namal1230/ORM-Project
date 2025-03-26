@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class PatientManagementController implements Initializable {
     public JFXButton btnSave;
@@ -84,9 +85,29 @@ public class PatientManagementController implements Initializable {
 
     public void saveOnAction(ActionEvent actionEvent) {
         String name = txtName.getText();
+        boolean cname = Pattern.matches("^[A-Za-z]+$",name);
+        if (!cname){
+            txtName.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String duration = txtDuration.getText();
+        boolean cduration = Pattern.matches("^[A-Za-z0-9]+$",duration);
+        if (!cduration){
+            txtDuration.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String cost = txtCost.getText();
+        boolean ccost= Pattern.matches("^-?\\d*\\.\\d+$ ",cost);
+        if (!ccost){
+            txtCost.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String description = txtDescription.getText();
+        boolean cdescription = Pattern.matches("^[A-Za-z0-9]+$\n",description);
+        if (!cdescription){
+            txtDescription.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String id = lblId.getText();
         if (btnSave.getText().equals("Save")){
             try {
