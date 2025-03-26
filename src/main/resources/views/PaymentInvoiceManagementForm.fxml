@@ -34,7 +34,7 @@
       </TableView>
       <JFXComboBox fx:id="cmbTherapy" layoutX="33.0" layoutY="147.0" prefHeight="25.0" prefWidth="100.0" promptText="theropy" />
       <JFXComboBox fx:id="cmbPatient" layoutX="152.0" layoutY="147.0" prefHeight="25.0" prefWidth="100.0" promptText="patient" />
-      <JFXButton buttonType="RAISED" layoutX="250.0" layoutY="195.0" text="Generate Report">
+      <JFXButton buttonType="RAISED" layoutX="250.0" layoutY="195.0" onAction="#generateReportOnAction" text="Generate Report">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

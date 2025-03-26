@@ -10,13 +10,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.example.bo.BOFactory;
 import org.example.bo.custom.TherapistManagementBO;
 import org.example.dto.TherapistsDTO;
 import org.example.tm.TherapistTm;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -36,12 +45,22 @@ public class TherapistManagementController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> objects = FXCollections.observableArrayList();
-        objects.add("Mentally");
-        cmbProgram.setItems(objects);
-
         loadTables();
         setId();
+        setValues();
+    }
+
+    private void setValues() {
+        try {
+            List<String> allProgram = therapistManagementBO.getAllProgram();
+            ObservableList<String> objects = FXCollections.observableArrayList();
+            for (String program:allProgram){
+                objects.add(program);
+            }
+            cmbProgram.setItems(objects);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void setId() {
@@ -163,5 +182,19 @@ public class TherapistManagementController implements Initializable {
         refreshPage();
         loadTables();
         setId();
+    }
+
+    public void generateReportOnAction(ActionEvent actionEvent) throws JRException, IOException {
+        InputStream resourceAsStream = getClass().getResourceAsStream("/reports/MentalHospital.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        Connection connection;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mental_database", "root", "PHW#84#jeor");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,connection);
+        JasperViewer.viewReport(jasperPrint);
     }
 }

@@ -84,4 +84,10 @@ public class TherapyProgramsDAOImpl implements TherapyProgramsDAO {
         Session session = FactoryConfiguration.getInstance().openSession();
         return session.createQuery("SELECT tp.id FROM TherapyPrograms tp").list();
     }
+
+    @Override
+    public List<String> getAllPrograms() throws IOException {
+        Session session = FactoryConfiguration.getInstance().openSession();
+        return session.createQuery("SELECT p.name FROM TherapyPrograms p").list();
+    }
 }

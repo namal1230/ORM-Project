@@ -20,4 +20,6 @@ public interface TherapyProgramsDAO extends SuperDAO {
     TherapyPrograms getbyId(int program) throws IOException;
 
     List getAllId() throws IOException;
+
+    List getAllPrograms() throws IOException;
 }

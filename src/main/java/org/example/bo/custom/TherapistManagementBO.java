@@ -16,4 +16,7 @@ public interface TherapistManagementBO extends SuperBO {
     String getLastId() throws IOException;
 
     boolean deleteTherapist(String id) throws IOException;
+
+    List getAllProgram() throws IOException;
+
 }

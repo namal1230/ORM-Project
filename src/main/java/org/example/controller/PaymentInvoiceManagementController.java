@@ -10,6 +10,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.example.bo.BOFactory;
 import org.example.bo.SuperBO;
 import org.example.bo.custom.PaymentInvoiceManagementBO;
@@ -18,7 +23,11 @@ import org.example.entity.Payments;
 import org.example.tm.PaymentTm;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -181,5 +190,18 @@ public class PaymentInvoiceManagementController implements Initializable {
         loadTables();
         loadIds();
         btnSave.setText("Save");
+    }
+
+    public void generateReportOnAction(ActionEvent actionEvent) {
+        try {
+            InputStream resourceAsStream = getClass().getResourceAsStream("/reports/paymentsReport.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mental_database", "root", "PHW#84#jeor");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, connection);
+            JasperViewer.viewReport(jasperPrint);
+        }catch (JRException|SQLException e){
+            e.printStackTrace();
+        }
     }
 }

@@ -32,7 +32,7 @@
             <TableColumn fx:id="colProgram" prefWidth="146.0" text="Program" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="244.0" layoutY="199.0" text="Generate Report">
+      <JFXButton buttonType="RAISED" layoutX="244.0" layoutY="199.0" onAction="#generateReportOnAction" text="Generate Report">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

@@ -6,6 +6,7 @@ module SerenityMentalHealthTherapyCenter {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
     requires java.naming;
+    requires jasperreports;
 
     opens org.example.controller to javafx.fxml;
     opens org.example.config to org.hibernate.orm.core;
