@@ -9,6 +9,7 @@ import org.example.config.FactoryConfiguration;
 import org.example.entity.Users;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 
@@ -26,16 +27,21 @@ public class AppInitializer extends Application {
         stage.setScene(scene);
         stage.show();
 
-//        Session session = FactoryConfiguration.getInstance().openSession();
-//        Transaction transaction = session.beginTransaction();
-//        Users user = new Users();
-//        user.setName("Bhashitha");
-//        user.setPassword("UNN123");
-//        user.setJobRole("Receptionist ");
-//
-//        session.save(user);
-//        transaction.commit();
-//
-//        session.close();
+        Session session = FactoryConfiguration.getInstance().openSession();
+        Transaction transaction = session.beginTransaction();
+        Users user = new Users();
+        user.setName("Bhashitha");
+        String hashPassword = hashPassword("UNN321");
+        user.setPassword(hashPassword);
+        user.setJobRole("Receptionist");
+
+        session.save(user);
+        transaction.commit();
+
+        session.close();
+    }
+    public static String hashPassword(String password){
+        return BCrypt.hashpw(password, BCrypt.gensalt(12));
+
     }
 }
