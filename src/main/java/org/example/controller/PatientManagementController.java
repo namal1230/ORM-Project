@@ -109,6 +109,10 @@ public class PatientManagementController implements Initializable {
             return;
         }
         String id = lblId.getText();
+
+        if (name== null || duration == null || cost== null || description==null){
+            new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+        }
         if (btnSave.getText().equals("Save")){
             try {
                 boolean isSave = patientManagementBO.savePatient(new PatientsDTO(name,duration,Double.parseDouble(cost),description));

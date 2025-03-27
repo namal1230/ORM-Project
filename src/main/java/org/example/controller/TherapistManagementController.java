@@ -108,6 +108,10 @@ public class TherapistManagementController implements Initializable {
         }
         String program = cmbProgram.getValue().toString();
         String id = lblId.getText();
+
+        if (name== null || status == null || program== null || id==null){
+            new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+        }
         if (btnSave.getText().equals("Save")){
             try {
                 boolean isSave = therapistManagementBO.saveTherapist(new TherapistsDTO(name, status, program));

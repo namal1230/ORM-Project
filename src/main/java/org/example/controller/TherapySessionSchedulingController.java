@@ -105,6 +105,9 @@ public class  TherapySessionSchedulingController implements Initializable {
         }
         String id = lblId.getText();
 
+        if (patient== null || therapy == null || program== null || cost==null || description==null){
+            new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+        }
         if (btnSave.getText().equals("Save")){
             try {
                 boolean isSave = therapySessionSchedulingBO.saveTherapySession(new TherapySessionsDTO(Integer.parseInt(therapy), Integer.parseInt(patient), Integer.parseInt(program), Double.parseDouble(cost), description));

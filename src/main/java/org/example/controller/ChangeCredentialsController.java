@@ -17,6 +17,7 @@ import org.example.util.PasswordUtil;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class ChangeCredentialsController implements Initializable {
 
@@ -34,10 +35,23 @@ public class ChangeCredentialsController implements Initializable {
 
     public void saveOnAction(ActionEvent actionEvent) {
         String name = txtName.getText();
+        boolean cname = Pattern.matches("^[A-Za-z]+$",name);
+        if (!cname){
+            txtName.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String password = txtPassword.getText();
+        boolean cpassword = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$",password);
+        if (!cpassword){
+            txtPassword.setStyle("-fx-text-fill: RED");
+            return;
+        }
         String hashPassword = PasswordUtil.hashPassword(password);
         String role = cmbJobRole.getValue().toString();
 
+        if (name== null || password == null || role== null){
+            new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+        }
         try {
             boolean isSave = changeCredentialsBO.saveCredentials(new UsersDTO(name, hashPassword, role));
             if (isSave){

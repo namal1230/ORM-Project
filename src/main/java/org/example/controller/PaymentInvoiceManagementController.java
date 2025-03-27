@@ -131,6 +131,9 @@ public class PaymentInvoiceManagementController implements Initializable {
         String patient = cmbPatient.getValue();
         String therapy = cmbTherapy.getValue();
 
+        if (payments== null || status == null || patient== null || therapy==null){
+            new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+        }
         if (btnSave.getText().equals("Save")){
             try {
                 boolean isSave = paymentBO.savePayment(new PaymentsDTO(Integer.parseInt(therapy), Integer.parseInt(patient), Double.parseDouble(payments), status));

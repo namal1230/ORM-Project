@@ -119,6 +119,9 @@ public class TherapProgramManagementController implements Initializable {
         }
         String id = lblId.getText();
 
+        if (name== null || duration == null || cost== null || description==null){
+            new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+        }
         if (btnSave.getText().equals("Save")) {
             try {
                 boolean isSave = therapyProgramManagementBO.saveTherapy(new TherapyProgramsDTO(name, duration, Double.parseDouble(cost), description));
