@@ -51,6 +51,7 @@ public class ChangeCredentialsController implements Initializable {
 
         if (name== null || password == null || role== null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+            return;
         }
         try {
             boolean isSave = changeCredentialsBO.saveCredentials(new UsersDTO(name, hashPassword, role));

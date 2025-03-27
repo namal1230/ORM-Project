@@ -58,6 +58,7 @@ public class LoginFormController implements Initializable {
         String value = cmbUserRole.getValue();
         if (name== null || password == null || value== null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+            return;
         }
         LoginBO loginBO = (LoginBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.USER);
 

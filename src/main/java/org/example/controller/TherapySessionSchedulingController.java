@@ -107,6 +107,7 @@ public class  TherapySessionSchedulingController implements Initializable {
 
         if (patient== null || therapy == null || program== null || cost==null || description==null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+            return;
         }
         if (btnSave.getText().equals("Save")){
             try {

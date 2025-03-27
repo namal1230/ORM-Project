@@ -111,6 +111,7 @@ public class TherapistManagementController implements Initializable {
 
         if (name== null || status == null || program== null || id==null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+            return;
         }
         if (btnSave.getText().equals("Save")){
             try {

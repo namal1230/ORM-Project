@@ -133,6 +133,7 @@ public class PaymentInvoiceManagementController implements Initializable {
 
         if (payments== null || status == null || patient== null || therapy==null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
+            return;
         }
         if (btnSave.getText().equals("Save")){
             try {
