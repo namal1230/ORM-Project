@@ -18,6 +18,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import org.example.bo.BOFactory;
 import org.example.bo.SuperBO;
 import org.example.bo.custom.PaymentInvoiceManagementBO;
+import org.example.bo.exception.PaymentProcessingException;
 import org.example.dto.PaymentsDTO;
 import org.example.entity.Payments;
 import org.example.tm.PaymentTm;
@@ -133,7 +134,7 @@ public class PaymentInvoiceManagementController implements Initializable {
 
         if (payments== null || status == null || patient== null || therapy==null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
-            return;
+            throw new NullPointerException("Input Fields are Empty..");
         }
         if (btnSave.getText().equals("Save")){
             try {
@@ -148,7 +149,11 @@ public class PaymentInvoiceManagementController implements Initializable {
                     new Alert(Alert.AlertType.ERROR,"Payment Not Saved.").show();
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                try {
+                    throw new PaymentProcessingException("Payment not Success..");
+                } catch (PaymentProcessingException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         } else if (btnSave.getText().equals("Update")) {
             try {

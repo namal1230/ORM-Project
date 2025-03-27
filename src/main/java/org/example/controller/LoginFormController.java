@@ -17,6 +17,7 @@ import javafx.stage.Window;
 import org.example.bo.BOFactory;
 import org.example.bo.SuperBO;
 import org.example.bo.custom.LoginBO;
+import org.example.bo.exception.AccountLockoutException;
 import org.example.dto.UsersDTO;
 import org.example.util.PasswordUtil;
 import org.mindrot.jbcrypt.BCrypt;
@@ -64,7 +65,7 @@ public class LoginFormController implements Initializable {
 
         if (name == null && password == null) {
             new Alert(Alert.AlertType.ERROR, "USER name and Password is Empty..").show();
-            return;
+            throw new NullPointerException("Input fields are Empty..");
         }
 
         List<UsersDTO> usersDTOS = loginBO.checkUser(new UsersDTO(name, password, value));
@@ -104,6 +105,12 @@ public class LoginFormController implements Initializable {
                 Scene scene = new Scene(load);
                 stage.setScene(scene);
                 stage.show();
+            }
+        }else {
+            try {
+                throw new AccountLockoutException("Invalid Credentials..");
+            } catch (AccountLockoutException e) {
+                throw new RuntimeException(e);
             }
         }
     }

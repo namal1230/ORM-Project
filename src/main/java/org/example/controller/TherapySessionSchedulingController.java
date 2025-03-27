@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.example.bo.BOFactory;
 import org.example.bo.custom.TherapySessionSchedulingBO;
+import org.example.bo.exception.TherapySessionShedulingException;
 import org.example.dto.TherapySessionsDTO;
 
 import java.io.IOException;
@@ -107,7 +108,7 @@ public class  TherapySessionSchedulingController implements Initializable {
 
         if (patient== null || therapy == null || program== null || cost==null || description==null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
-            return;
+            throw new NullPointerException("Input Fields are Empty..");
         }
         if (btnSave.getText().equals("Save")){
             try {
@@ -121,7 +122,11 @@ public class  TherapySessionSchedulingController implements Initializable {
                     new Alert(Alert.AlertType.ERROR,"Therapy Session Not Save.").show();
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                try {
+                    throw new TherapySessionShedulingException("Therapy Session sheduling Issue..");
+                } catch (TherapySessionShedulingException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         } else if (btnSave.getText().equals("Update")) {
             try {

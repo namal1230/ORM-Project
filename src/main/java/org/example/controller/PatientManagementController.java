@@ -112,7 +112,7 @@ public class PatientManagementController implements Initializable {
 
         if (name== null || duration == null || cost== null || description==null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
-            return;
+            throw new NullPointerException("Input Fields are Empty..");
         }
         if (btnSave.getText().equals("Save")){
             try {

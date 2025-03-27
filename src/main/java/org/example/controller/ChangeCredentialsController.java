@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import org.example.bo.BOFactory;
 import org.example.bo.SuperBO;
 import org.example.bo.custom.ChangeCredentialsBO;
+import org.example.bo.exception.InvalidCredentialsException;
 import org.example.dto.UsersDTO;
 import org.example.util.PasswordUtil;
 
@@ -51,7 +52,7 @@ public class ChangeCredentialsController implements Initializable {
 
         if (name== null || password == null || role== null){
             new Alert(Alert.AlertType.ERROR,"Missing Fields.").show();
-            return;
+            throw new NullPointerException("Inputs Fields are Empty..");
         }
         try {
             boolean isSave = changeCredentialsBO.saveCredentials(new UsersDTO(name, hashPassword, role));
@@ -59,8 +60,9 @@ public class ChangeCredentialsController implements Initializable {
                 new Alert(Alert.AlertType.INFORMATION,"User Credentials Saved Successfully.").show();
             } else {
                 new Alert(Alert.AlertType.ERROR,"User Credentials Not Saved.").show();
+                throw new InvalidCredentialsException("Invalid Credentials..");
             }
-        } catch (IOException e) {
+        } catch (IOException|InvalidCredentialsException e) {
             throw new RuntimeException(e);
         }
     }
