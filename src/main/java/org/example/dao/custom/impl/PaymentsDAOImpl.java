@@ -68,4 +68,14 @@ public class PaymentsDAOImpl implements PaymentsDAO {
         Session session = FactoryConfiguration.getInstance().openSession();
         return session.createQuery("from Payments ").list();
     }
+
+    @Override
+    public Payments getbyId(int text) throws IOException {
+        return null;
+    }
+
+    @Override
+    public List getAllId() throws IOException {
+        return null;
+    }
 }

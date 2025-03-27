@@ -33,7 +33,7 @@
             <TableColumn fx:id="colDescription" prefWidth="104.0" text="Decription" />
          </columns>
       </TableView>
-      <JFXTextField fx:id="txtDescription" layoutX="463.0" layoutY="152.0" prefHeight="25.0" prefWidth="108.0" promptText="cost" text="description" />
+      <JFXTextField fx:id="txtDescription" layoutX="463.0" layoutY="152.0" prefHeight="25.0" prefWidth="108.0" promptText="description" />
       <JFXButton buttonType="RAISED" layoutX="161.0" layoutY="204.0" onAction="#generateReportOnAction" text="Generate Report">
          <font>
             <Font name="System Bold" size="16.0" />

@@ -2,7 +2,6 @@ package org.example.bo.custom.impl;
 
 import org.example.bo.custom.TherapistManagementBO;
 import org.example.dao.DAOFactory;
-import org.example.dao.SuperDAO;
 import org.example.dao.custom.TherapistDAO;
 import org.example.dao.custom.TherapyProgramsDAO;
 import org.example.dto.TherapistsDTO;
@@ -17,12 +16,12 @@ public class TherapistManagementBOImpl implements TherapistManagementBO {
     TherapyProgramsDAO therapyProgramsDAO = (TherapyProgramsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.THERAPIST_PROGRAM);
     @Override
     public boolean saveTherapist(TherapistsDTO therapistsDTO) throws IOException {
-        return therapist.saveTherapist(new Therapists(therapistsDTO.getName(),therapistsDTO.getStatus(),therapistsDTO.getProgram()));
+        return therapist.save(new Therapists(therapistsDTO.getName(),therapistsDTO.getStatus(),therapistsDTO.getProgram()));
     }
 
     @Override
     public boolean updateTherapist(TherapistsDTO therapistsDTO) throws IOException {
-        return therapist.updateTherapist(new Therapists(therapistsDTO.getId(),therapistsDTO.getName(),therapistsDTO.getStatus(),therapistsDTO.getProgram()));
+        return therapist.update(new Therapists(therapistsDTO.getId(),therapistsDTO.getName(),therapistsDTO.getStatus(),therapistsDTO.getProgram()));
     }
 
     @Override

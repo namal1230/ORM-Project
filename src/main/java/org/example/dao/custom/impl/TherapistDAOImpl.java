@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TherapistDAOImpl implements TherapistDAO {
     @Override
-    public boolean saveTherapist(Therapists therapists) throws IOException {
+    public boolean save(Therapists therapists) throws IOException {
         Session session = FactoryConfiguration.getInstance().openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -23,7 +23,7 @@ public class TherapistDAOImpl implements TherapistDAO {
     }
 
     @Override
-    public boolean updateTherapist(Therapists therapists) throws IOException {
+    public boolean update(Therapists therapists) throws IOException {
         Session session = FactoryConfiguration.getInstance().openSession();
         Transaction transaction = session.beginTransaction();
 

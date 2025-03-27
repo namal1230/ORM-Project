@@ -36,4 +36,34 @@ public class UserDAOImpl implements UserDAO {
 
         return true;
     }
+
+    @Override
+    public boolean update(Users users) throws IOException {
+        return false;
+    }
+
+    @Override
+    public int getLastId() throws IOException {
+        return 0;
+    }
+
+    @Override
+    public boolean delete(String id) throws IOException {
+        return false;
+    }
+
+    @Override
+    public List<Users> getAll() throws IOException {
+        return null;
+    }
+
+    @Override
+    public Users getbyId(int text) throws IOException {
+        return null;
+    }
+
+    @Override
+    public List getAllId() throws IOException {
+        return null;
+    }
 }
