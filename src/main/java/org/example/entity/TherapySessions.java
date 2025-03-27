@@ -15,11 +15,11 @@ public class TherapySessions {
     private int id;
     private double cost;
     private String description;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Patients patients;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Therapists therapists;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private TherapyPrograms therapyPrograms;
 
     public TherapySessions(double cost, String description, Patients patient, Therapists therapy, TherapyPrograms program) {

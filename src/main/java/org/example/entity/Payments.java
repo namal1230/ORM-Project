@@ -15,9 +15,9 @@ public class Payments {
     private int id;
     private double payment;
     private String status;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Patients patients;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Therapists therapists;
 
     public Payments(double payment, String status, Patients patients, Therapists therapists) {
