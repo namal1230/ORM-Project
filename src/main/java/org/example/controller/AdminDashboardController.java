@@ -4,8 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,5 +40,17 @@ public class AdminDashboardController{
     public void setValue(String name, String password) {
         lblName.setText(name);
         lblPassword.setText(password);
+    }
+
+    public void changeCredentialsOnAction(ActionEvent actionEvent) {
+        try {
+            Parent load = FXMLLoader.load(getClass().getResource("/views/ChangeCredentialsForm.fxml"));
+            Scene scene = new Scene(load);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

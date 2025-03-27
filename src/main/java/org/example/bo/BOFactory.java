@@ -12,7 +12,7 @@ public class BOFactory {
 
     public enum BOTypes {
         USER,THERAPIST,THERAPY_PROGRAM,PATIENTS,THERAPY_SESSION,
-        PATIENT_HISTORY,PAYMENTS
+        PATIENT_HISTORY,PAYMENTS,CHANGE_CREDENTIALS
     }
 
     public SuperBO getBO(BOTypes boTypes){
@@ -37,6 +37,9 @@ public class BOFactory {
             }
             case PAYMENTS -> {
                 return new PaymentInvoiceManagementBOImpl();
+            }
+            case CHANGE_CREDENTIALS -> {
+                return new ChangeCredentialsBOImpl();
             }
             default -> {
                 return null;

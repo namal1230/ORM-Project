@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface UserDAO extends SuperDAO {
     List<Users> checkUser(Users users) throws IOException;
+
+    boolean save(Users users) throws IOException;
 }

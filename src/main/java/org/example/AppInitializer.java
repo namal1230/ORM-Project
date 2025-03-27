@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.config.FactoryConfiguration;
 import org.example.entity.Users;
+import org.example.util.PasswordUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.mindrot.jbcrypt.BCrypt;
@@ -31,17 +32,13 @@ public class AppInitializer extends Application {
         Transaction transaction = session.beginTransaction();
         Users user = new Users();
         user.setName("Bhashitha");
-        String hashPassword = hashPassword("UNN321");
+        String hashPassword = PasswordUtil.hashPassword("UNN321");
         user.setPassword(hashPassword);
-        user.setJobRole("Receptionist");
+        user.setJobRole("Admin");
 
         session.save(user);
         transaction.commit();
 
         session.close();
-    }
-    public static String hashPassword(String password){
-        return BCrypt.hashpw(password, BCrypt.gensalt(12));
-
     }
 }

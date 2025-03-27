@@ -4,6 +4,7 @@ import org.example.config.FactoryConfiguration;
 import org.example.dao.custom.UserDAO;
 import org.example.entity.Users;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.io.IOException;
@@ -21,5 +22,18 @@ public class UserDAOImpl implements UserDAO {
 
         return list;
 
+    }
+
+    @Override
+    public boolean save(Users users) throws IOException {
+        Session session = FactoryConfiguration.getInstance().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.persist(users);
+
+        transaction.commit();
+        session.close();
+
+        return true;
     }
 }

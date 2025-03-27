@@ -18,6 +18,7 @@ import org.example.bo.BOFactory;
 import org.example.bo.SuperBO;
 import org.example.bo.custom.LoginBO;
 import org.example.dto.UsersDTO;
+import org.example.util.PasswordUtil;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
@@ -72,7 +73,7 @@ public class LoginFormController implements Initializable {
         boolean isAvailable=false;
 
         for (UsersDTO usersDTO:usersDTOS){
-            if (checkpassword(password,usersDTO.getPassword())){
+            if (PasswordUtil.checkpassword(password,usersDTO.getPassword())){
                 isAvailable=true;
             }
         }
@@ -102,12 +103,6 @@ public class LoginFormController implements Initializable {
                 stage.show();
             }
         }
-    }
-    public static boolean checkpassword(String original,String hash){
-        System.out.println(original);
-        System.out.println(hash);
-        return BCrypt.checkpw(original, hash);
-
     }
 
 }
